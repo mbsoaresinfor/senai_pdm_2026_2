@@ -1,6 +1,12 @@
 package com.example.petapp;
 
 import android.os.Bundle;
+import android.view.View;
+
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,13 +20,25 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setTitle("");
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+        setTitle(R.string.login);
+
+
+
+    }
+
+    public void logar(View view) {
+         // aqui eu vou colocar o codigo que vai ser executado, quando eu clicar no botao de login
+
+        EditText login =  findViewById(R.id.textViewLogin);
+        Button botao = findViewById(R.id.buttonLogin);
+
+        if(login.getText().toString().isEmpty()){
+            Toast.makeText(this,R.string.campo_vazio, Toast.LENGTH_LONG).show();
+        }else {
+            Toast.makeText(this, "Você escreveu:  " + login.getText().toString(), Toast.LENGTH_LONG).show();
+            botao.setText(login.getText().toString());
+        }
     }
 }

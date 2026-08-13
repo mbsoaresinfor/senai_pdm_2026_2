@@ -7,12 +7,27 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="189dp"
-        android:layout_height="75dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="141dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <Button
+            android:id="@+id/buttonLogin"
+            android:layout_width="259dp"
+            android:layout_height="143dp"
+            android:layout_marginHorizontal="70dp"
+
+            android:layout_marginTop="100dp"
+            android:onClick="logar"
+            android:text="@string/login" />
+
+        <EditText
+            android:id="@+id/textViewLogin"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="@string/login" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
