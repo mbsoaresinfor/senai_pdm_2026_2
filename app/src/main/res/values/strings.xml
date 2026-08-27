@@ -4,4 +4,7 @@
     <string name="login">Login</string>
     <string name="meu_nome">Marcelo Soares</string>
     <string name="campo_vazio">Campo vazio</string>
+    <string name="sucesso_login">Sucesso no login</string>
+
+
 </resources>

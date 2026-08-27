@@ -1,5 +1,6 @@
 package com.example.petapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -31,14 +32,23 @@ public class LoginActivity extends AppCompatActivity {
     public void logar(View view) {
          // aqui eu vou colocar o codigo que vai ser executado, quando eu clicar no botao de login
 
-        EditText login =  findViewById(R.id.textViewLogin);
-        Button botao = findViewById(R.id.buttonLogin);
+        EditText login =  findViewById(R.id.editTextTextLogin);
+        EditText senha =  findViewById(R.id.editTextTextSenha);
 
-        if(login.getText().toString().isEmpty()){
-            Toast.makeText(this,R.string.campo_vazio, Toast.LENGTH_LONG).show();
+
+
+        if(login.getText().toString().equals("admin") &&
+            senha.getText().toString().equals("123")){
+            DadosCompartilhados.usuarioLogado ="admin";
+            Bundle bundle = new Bundle();
+            bundle.putString("usuario_logado","admin");
+            Intent intent = new Intent(this,DashboardActivity.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
         }else {
-            Toast.makeText(this, "Você escreveu:  " + login.getText().toString(), Toast.LENGTH_LONG).show();
-            botao.setText(login.getText().toString());
+            Toast.makeText(this, "“Usuário ou senha inválido",
+                    Toast.LENGTH_LONG).show();
         }
-    }
+
+   }
 }
