@@ -35,11 +35,19 @@ public class LoginActivity extends AppCompatActivity {
         EditText login =  findViewById(R.id.editTextTextLogin);
         EditText senha =  findViewById(R.id.editTextTextSenha);
 
+        String loginDigitado = login.getText().toString();
+        String senhaDigitada =  senha.getText().toString();
+        boolean loginValidado = false;
+        for(int i=0; i < DadosCompartilhados.usuarios.length;i++){
+            if(DadosCompartilhados.usuarios[i].equals(loginDigitado)
+            && DadosCompartilhados.senhas[i].equals(senhaDigitada)){
+                loginValidado = true;
+                break;
+            }
+        }
 
-
-        if(login.getText().toString().equals("admin") &&
-            senha.getText().toString().equals("123")){
-            DadosCompartilhados.usuarioLogado ="admin";
+        if(loginValidado){
+            DadosCompartilhados.usuarioLogado =loginDigitado;
             Bundle bundle = new Bundle();
             bundle.putString("usuario_logado","admin");
             Intent intent = new Intent(this,DashboardActivity.class);

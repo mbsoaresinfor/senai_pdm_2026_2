@@ -15,6 +15,18 @@
             android:name=".DashboardActivity"
             android:exported="false" />
         <activity
+            android:name=".AtualizarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RemoverActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListagemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CadastroActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
