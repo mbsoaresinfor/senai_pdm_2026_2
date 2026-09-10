@@ -11,6 +11,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+
 public class CadastroActivity extends AppCompatActivity {
 
     @Override
@@ -32,6 +34,7 @@ public class CadastroActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
                 return;
         }
+
 
         boolean resultado = DadosCompartilhados.salvarPet(nomePet,idadePet);
         if(resultado == true) {
