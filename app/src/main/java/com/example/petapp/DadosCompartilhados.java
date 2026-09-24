@@ -10,14 +10,18 @@ public class DadosCompartilhados {
     public static int IND_VETOR_PET = 0;
     public static final int TAM_MAX_VETOR_PET = 50;
     public static Pet[] vetorPets = new Pet[TAM_MAX_VETOR_PET];
+    public static int id_pet = 0;
 
     public static boolean salvarPet(String nome,String idade){
         if(IND_VETOR_PET >= TAM_MAX_VETOR_PET){
             return false;
         }
+        id_pet++;
+
         Pet pet = new Pet();
         pet.nome = nome;
         pet.idade = idade;
+        pet.id = id_pet;
         vetorPets[IND_VETOR_PET] = pet;
         IND_VETOR_PET++;
         return true;
