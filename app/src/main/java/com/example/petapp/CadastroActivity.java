@@ -15,12 +15,14 @@ import java.util.ArrayList;
 
 public class CadastroActivity extends AppCompatActivity {
 
+    RepositorioPet repositorioPet;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("Cadastro de Pet");
         setContentView(R.layout.activity_cadastro);
-
+        repositorioPet = new RepositorioPet(this);
     }
 
     public void salvar(View view) {
@@ -35,17 +37,16 @@ public class CadastroActivity extends AppCompatActivity {
                 return;
         }
 
+        Pet pet = new Pet();
+        pet.idade = idadePet;
+        pet.nome = nomePet;
+        repositorioPet.salvar(pet);
 
-        boolean resultado = DadosCompartilhados.salvarPet(nomePet,idadePet);
-        if(resultado == true) {
-            Toast.makeText(this, "Pet cadastrado com sucesso",
-                    Toast.LENGTH_LONG).show();
-            caixaNomePet.setText(""); // limpa o campo do nome do pet
-            caixaIdadePet.setText(""); // limpa o campo de idade do pet
-        }else{
-            Toast.makeText(this, "Erro ao cadastar o pet",
-                    Toast.LENGTH_LONG).show();
-        }
+        Toast.makeText(this, "Pet cadastrado com sucesso",
+                Toast.LENGTH_LONG).show();
+        caixaNomePet.setText(""); // limpa o campo do nome do pet
+        caixaIdadePet.setText(""); // limpa o campo de idade do pet
+
 
 
     }

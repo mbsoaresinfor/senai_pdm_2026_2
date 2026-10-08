@@ -5,6 +5,11 @@
     <string name="meu_nome">Marcelo Soares</string>
     <string name="campo_vazio">Campo vazio</string>
     <string name="sucesso_login">Sucesso no login</string>
+    <string name="nome">Nome:</string>
+    <string name="idade">Idade:</string>
+    <string name="salvar">Salvar</string>
+    <string name="parabens_nome_idade">Parabéns, você acertou meu nome e idade !</string>
+
 
 
 </resources>
