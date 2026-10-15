@@ -13,12 +13,16 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class AtualizarActivity extends AppCompatActivity {
 
+    RepositorioLog repositorioLog;
+    RepositorioPet repositorioPet;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setTitle("atualizar");
         setContentView(R.layout.activity_atualizar);
-
+        repositorioLog = new RepositorioLog(this);
+        repositorioPet = new RepositorioPet(this);
     }
 
     public void atualizar(View view) {
@@ -36,22 +40,17 @@ public class AtualizarActivity extends AppCompatActivity {
             return;
         }
 
-        for(int i=0; i < DadosCompartilhados.vetorPets.length;i++){
-            Pet pet = DadosCompartilhados.vetorPets[i];
-            if(pet != null){
-                if(pet.id == Integer.parseInt(idInt)){
-                   pet.nome = novoNome;
-                   pet.idade = novaIdade;
-                    Toast.makeText(this, "Pet atualizado com sucesso",
-                            Toast.LENGTH_LONG).show();
-                    return;
-
-                }
-            }
+        Pet pet = repositorioPet.buscarPeloId( Integer.parseInt(idInt));
+        if( pet == null){
+            Toast.makeText(this, "Nao localizado pet com id " + id,
+                    Toast.LENGTH_LONG).show();
+            return;
         }
 
-        Toast.makeText(this, "Nao localizado pet com id " + id,
-                Toast.LENGTH_LONG).show();
+        repositorioPet.atualizar( Integer.parseInt(idInt),novoNome,novaIdade);
+        Toast.makeText(this, "Pet atualizado com sucesso",
+                            Toast.LENGTH_LONG).show();
+
 
     }
 }

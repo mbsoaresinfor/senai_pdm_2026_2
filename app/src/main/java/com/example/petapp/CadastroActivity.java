@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class CadastroActivity extends AppCompatActivity {
 
     RepositorioPet repositorioPet;
+    RepositorioLog repositorioLog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,7 @@ public class CadastroActivity extends AppCompatActivity {
         setTitle("Cadastro de Pet");
         setContentView(R.layout.activity_cadastro);
         repositorioPet = new RepositorioPet(this);
+        repositorioLog = new RepositorioLog(this);
     }
 
     public void salvar(View view) {
@@ -41,6 +43,7 @@ public class CadastroActivity extends AppCompatActivity {
         pet.idade = idadePet;
         pet.nome = nomePet;
         repositorioPet.salvar(pet);
+        repositorioLog.salvar("salvar",DadosCompartilhados.usuarioLogado);
 
         Toast.makeText(this, "Pet cadastrado com sucesso",
                 Toast.LENGTH_LONG).show();

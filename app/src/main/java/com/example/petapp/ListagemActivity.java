@@ -13,24 +13,29 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.List;
 
 public class ListagemActivity extends AppCompatActivity {
+
+    RepositorioPet repositorioPet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listagem);
+        repositorioPet = new RepositorioPet(this);
 
-            if(DadosCompartilhados.IND_VETOR_PET == 0){
+        List<Pet> listaPet = repositorioPet.listar();
+            if(listaPet.isEmpty()){
                 Toast.makeText(this, "Nenhum pet cadastrado",
                         Toast.LENGTH_LONG).show();
                 return;
             }
 
             ListView listView = findViewById(R.id.listViewPet);
-            String[] dados = new String[DadosCompartilhados.IND_VETOR_PET];
-            for(int i=0; i < DadosCompartilhados.IND_VETOR_PET;i++){
-                dados[i] = DadosCompartilhados.vetorPets[i].toString();
+            String[] dados = new String[listaPet.size()];
+            for(int i=0; i < listaPet.size();i++){
+                dados[i] =listaPet.get(i).toString();
             }
 
             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,

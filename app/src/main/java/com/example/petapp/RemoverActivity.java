@@ -13,12 +13,16 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class RemoverActivity extends AppCompatActivity {
 
+    RepositorioLog repositorioLog;
+    RepositorioPet repositorioPet;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setTitle("remover");
         setContentView(R.layout.activity_remover);
-
+        repositorioLog = new RepositorioLog(this);
+        repositorioPet = new RepositorioPet(this);
     }
 
     public void remover(View view) {
@@ -33,21 +37,20 @@ public class RemoverActivity extends AppCompatActivity {
         //valor.matches("\\d+");
         int id = Integer.parseInt(valor);
 
-        for(int i=0; i < DadosCompartilhados.vetorPets.length;i++){
-            Pet pet = DadosCompartilhados.vetorPets[i];
-            if(pet != null){
-                if(pet.id == id){
-                    DadosCompartilhados.vetorPets[i] = null;
-                    Toast.makeText(this, "Pet removido com sucesso",
-                            Toast.LENGTH_LONG).show();
-                    return;
-
-                }
-            }
-        }
-
-        Toast.makeText(this, "Nao localizado pet com id " + id,
+      Pet pet = repositorioPet.buscarPeloId(id);
+      if(pet == null){
+          Toast.makeText(this, "Nao localizado pet com id " + id,
+                  Toast.LENGTH_LONG).show();
+          return;
+      }
+        repositorioPet.remover(id);
+        Toast.makeText(this, "Pet removido com sucesso",
                 Toast.LENGTH_LONG).show();
+        repositorioLog.salvar("remover",DadosCompartilhados.usuarioLogado);
+
+
+
+
 
 
     }
